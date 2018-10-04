@@ -7971,3 +7971,126 @@ com.kuka.deployment.service.LocalizableDeploymentServiceException: Could not unl
 
 !ENTRY org.eclipse.osgi 2 1 2018-10-03 15:07:23.210
 !MESSAGE NLS unused message: LocalCorrectionsSubProcessor_surroundwith_description in: org.eclipse.jdt.internal.ui.text.correction.CorrectionMessages
+!SESSION 2018-10-04 09:50:55.818 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.6.0_45
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=de_DE
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.osgi 2 1 2018-10-04 09:51:21.797
+!MESSAGE NLS unused message: DeleteTemplateHandler_ConfirmationTitleRapi2 in: com.kuka.roboticsAPI.eclipseBase.ResourceStrings
+
+!ENTRY org.eclipse.osgi 2 1 2018-10-04 09:51:21.802
+!MESSAGE NLS unused message: DeleteHandler_DeleteFrameWithChildsDialogMessageRapi2 in: com.kuka.roboticsAPI.eclipseBase.ResourceStrings
+
+!ENTRY org.eclipse.osgi 2 1 2018-10-04 09:51:21.805
+!MESSAGE NLS unused message: Rapi2DeleteHandler_ConfirmCategoryDeletionTitle in: com.kuka.roboticsAPI.eclipseBase.ResourceStrings
+
+!ENTRY org.eclipse.osgi 2 1 2018-10-04 09:51:21.805
+!MESSAGE NLS unused message: Rapi2DeleteHandler_ConfirmCategoryDeletionMessage in: com.kuka.roboticsAPI.eclipseBase.ResourceStrings
+
+!ENTRY org.eclipse.osgi 2 1 2018-10-04 09:51:21.805
+!MESSAGE NLS unused message: Rapi2CreateFrameHandler_OnlyOneFrameAllowed in: com.kuka.roboticsAPI.eclipseBase.ResourceStrings
+
+!ENTRY org.eclipse.osgi 2 1 2018-10-04 09:51:21.807
+!MESSAGE NLS unused message: ScenegraphView_SelectRapi1 in: com.kuka.roboticsAPI.eclipseBase.ResourceStrings
+
+!ENTRY org.eclipse.osgi 2 1 2018-10-04 09:51:21.807
+!MESSAGE NLS unused message: ScenegraphView_SelectRapi2 in: com.kuka.roboticsAPI.eclipseBase.ResourceStrings
+
+!ENTRY org.eclipse.osgi 2 1 2018-10-04 09:51:21.810
+!MESSAGE NLS unused message: MassPropertySection_validationError_outOfRange in: com.kuka.roboticsAPI.eclipseBase.ResourceStrings
+
+!ENTRY org.eclipse.osgi 2 1 2018-10-04 09:51:21.810
+!MESSAGE NLS missing message: GeneralPropertySection_sectionGeneralInformation in: com.kuka.roboticsAPI.eclipseBase.ResourceStrings
+
+!ENTRY org.eclipse.osgi 2 1 2018-10-04 09:51:21.810
+!MESSAGE NLS missing message: GeneralPropertySection_sectionGeneralInformationDescription in: com.kuka.roboticsAPI.eclipseBase.ResourceStrings
+
+!ENTRY org.eclipse.osgi 2 1 2018-10-04 09:51:21.812
+!MESSAGE NLS missing message: MassPropertySection_description in: com.kuka.roboticsAPI.eclipseBase.ResourceStrings
+
+!ENTRY org.eclipse.osgi 2 1 2018-10-04 09:51:21.812
+!MESSAGE NLS missing message: MassPropertySection_labelMass in: com.kuka.roboticsAPI.eclipseBase.ResourceStrings
+
+!ENTRY org.eclipse.osgi 2 1 2018-10-04 09:51:21.812
+!MESSAGE NLS missing message: MassPropertySection_title in: com.kuka.roboticsAPI.eclipseBase.ResourceStrings
+
+!ENTRY org.eclipse.osgi 2 1 2018-10-04 09:51:21.815
+!MESSAGE NLS missing message: LoadDataPropertySection_centerOfMass in: com.kuka.roboticsAPI.eclipseBase.ResourceStrings
+
+!ENTRY org.eclipse.osgi 2 1 2018-10-04 09:51:21.815
+!MESSAGE NLS missing message: LoadDataPropertySection_centerOfMassDescription in: com.kuka.roboticsAPI.eclipseBase.ResourceStrings
+
+!ENTRY org.eclipse.osgi 2 1 2018-10-04 09:51:21.815
+!MESSAGE NLS missing message: LoadDataPropertySection_inertia in: com.kuka.roboticsAPI.eclipseBase.ResourceStrings
+
+!ENTRY org.eclipse.osgi 2 1 2018-10-04 09:51:21.817
+!MESSAGE NLS missing message: LoadDataPropertySection_inertiaDescription in: com.kuka.roboticsAPI.eclipseBase.ResourceStrings
+
+!ENTRY org.eclipse.osgi 2 1 2018-10-04 09:51:21.817
+!MESSAGE NLS missing message: LoadDataPropertySection_JX in: com.kuka.roboticsAPI.eclipseBase.ResourceStrings
+
+!ENTRY org.eclipse.osgi 2 1 2018-10-04 09:51:21.817
+!MESSAGE NLS missing message: LoadDataPropertySection_JY in: com.kuka.roboticsAPI.eclipseBase.ResourceStrings
+
+!ENTRY org.eclipse.osgi 2 1 2018-10-04 09:51:21.820
+!MESSAGE NLS missing message: LoadDataPropertySection_JZ in: com.kuka.roboticsAPI.eclipseBase.ResourceStrings
+
+!ENTRY org.eclipse.osgi 2 1 2018-10-04 09:51:21.820
+!MESSAGE NLS missing message: LoadDataPropertySection_MSA in: com.kuka.roboticsAPI.eclipseBase.ResourceStrings
+
+!ENTRY org.eclipse.osgi 2 1 2018-10-04 09:51:21.820
+!MESSAGE NLS missing message: LoadDataPropertySection_MSB in: com.kuka.roboticsAPI.eclipseBase.ResourceStrings
+
+!ENTRY org.eclipse.osgi 2 1 2018-10-04 09:51:21.822
+!MESSAGE NLS missing message: LoadDataPropertySection_MSC in: com.kuka.roboticsAPI.eclipseBase.ResourceStrings
+
+!ENTRY org.eclipse.osgi 2 1 2018-10-04 09:51:21.822
+!MESSAGE NLS missing message: LoadDataPropertySection_MSX in: com.kuka.roboticsAPI.eclipseBase.ResourceStrings
+
+!ENTRY org.eclipse.osgi 2 1 2018-10-04 09:51:21.822
+!MESSAGE NLS missing message: LoadDataPropertySection_MSY in: com.kuka.roboticsAPI.eclipseBase.ResourceStrings
+
+!ENTRY org.eclipse.osgi 2 1 2018-10-04 09:51:21.825
+!MESSAGE NLS missing message: LoadDataPropertySection_MSZ in: com.kuka.roboticsAPI.eclipseBase.ResourceStrings
+
+!ENTRY org.eclipse.osgi 2 1 2018-10-04 09:51:21.825
+!MESSAGE NLS missing message: LoadDataPropertySection_orientation in: com.kuka.roboticsAPI.eclipseBase.ResourceStrings
+
+!ENTRY org.eclipse.osgi 2 1 2018-10-04 09:51:21.825
+!MESSAGE NLS missing message: LoadDataPropertySection_orientationDescription in: com.kuka.roboticsAPI.eclipseBase.ResourceStrings
+
+!ENTRY org.eclipse.osgi 2 1 2018-10-04 09:51:21.827
+!MESSAGE NLS missing message: PropertyLabels_classOfTemplate in: com.kuka.roboticsAPI.eclipseBase.ResourceStrings
+
+!ENTRY org.eclipse.osgi 2 1 2018-10-04 09:51:21.827
+!MESSAGE NLS missing message: PropertyLabels_comment in: com.kuka.roboticsAPI.eclipseBase.ResourceStrings
+
+!ENTRY org.eclipse.osgi 2 1 2018-10-04 09:51:21.827
+!MESSAGE NLS missing message: PropertyLabels_frame in: com.kuka.roboticsAPI.eclipseBase.ResourceStrings
+
+!ENTRY org.eclipse.osgi 2 1 2018-10-04 09:51:21.830
+!MESSAGE NLS missing message: PropertyLabels_mass in: com.kuka.roboticsAPI.eclipseBase.ResourceStrings
+
+!ENTRY org.eclipse.osgi 2 1 2018-10-04 09:51:21.830
+!MESSAGE NLS missing message: PropertyLabels_name in: com.kuka.roboticsAPI.eclipseBase.ResourceStrings
+
+!ENTRY org.eclipse.osgi 2 1 2018-10-04 09:51:21.830
+!MESSAGE NLS missing message: StandardFrameForMovementPropertySection_sectionDescription in: com.kuka.roboticsAPI.eclipseBase.ResourceStrings
+
+!ENTRY org.eclipse.osgi 2 1 2018-10-04 09:51:21.832
+!MESSAGE NLS missing message: StandardFrameForMovementPropertySection_sectionTitle in: com.kuka.roboticsAPI.eclipseBase.ResourceStrings
+
+!ENTRY org.eclipse.osgi 2 1 2018-10-04 09:51:32.484
+!MESSAGE NLS unused message: FrameSafetyPropertySection_outOfRange in: com.kuka.safety.configuration.SafetyConfiguration
+
+!ENTRY org.eclipse.osgi 2 1 2018-10-04 09:51:32.486
+!MESSAGE NLS unused message: WorkpieceSafetyPropertySection_description in: com.kuka.safety.configuration.SafetyConfiguration
+
+!ENTRY org.eclipse.osgi 2 1 2018-10-04 09:51:32.487
+!MESSAGE NLS unused message: FrameSafetyPropertySection_description in: com.kuka.safety.configuration.SafetyConfiguration
+
+!ENTRY org.eclipse.osgi 2 1 2018-10-04 09:51:32.491
+!MESSAGE NLS unused message: WorkpieceSafetyPropertySection_inertiaInvalid in: com.kuka.safety.configuration.SafetyConfiguration

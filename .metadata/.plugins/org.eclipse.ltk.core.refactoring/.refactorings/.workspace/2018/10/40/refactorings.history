@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Java-Projekt &apos;OPCUA-TEST2&apos; in &apos;OPCUA-TEST2_bak&apos; umbenennen&#x0D;&#x0A;- Ursprüngliches Element: &apos;OPCUA-TEST2&apos;&#x0D;&#x0A;- Element &apos;OPCUA-TEST2&apos; umbenennen&#x0D;&#x0A;- Referenzen auf Element nach Refactoring aktualisieren" description="Java-Projekt &apos;OPCUA-TEST2&apos; umbenennen" flags="7" id="org.eclipse.jdt.ui.rename.java.project" input="=OPCUA-TEST2" name="OPCUA-TEST2_bak" references="true" stamp="1538567447621" version="1.0"/>
+</session>

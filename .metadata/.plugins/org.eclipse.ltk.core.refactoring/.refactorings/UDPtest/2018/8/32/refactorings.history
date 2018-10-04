@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;test2.java&apos; to &apos;UDPtest/src/application&apos;&#x0D;&#x0A;- Ursprüngliches Projekt: &apos;UDPtest&apos;&#x0D;&#x0A;- Zielelement: &apos;UDPtest/src/application&apos;&#x0D;&#x0A;- Ursprüngliches Element: &apos;application.test2.java&apos;" description="Kompilierungseinheit kopieren" destination="/src&lt;application" element1="/src&lt;application{test2.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1533710621213" units="1" version="1.0"/>
+</session>

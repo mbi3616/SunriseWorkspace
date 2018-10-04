@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move element &apos;application&apos; to &apos;java&apos;&#x0D;&#x0A;- Ursprüngliches Projekt: &apos;OPCUA-Test&apos;&#x0D;&#x0A;- Zielelement: &apos;java&apos;&#x0D;&#x0A;- Ursprüngliches Element: &apos;application&apos;&#x0D;&#x0A;- Referenzen auf Element nach Refactoring aktualisieren" description="Ordner verschieben" element1="src/application" files="0" flags="589830" folders="1" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1536759432805" target="src/main/java" units="0" version="1.0"/>
+</session>

@@ -1,0 +1,19 @@
+#Wed Oct 03 13:47:56 CEST 2018
+defaultApplication=application.test1
+ioGroupAppEnable=
+ioInputAppEnable=
+udpCtrlClientIP=172.31.1.1
+ioGroupAutExtActive=
+ioInputAppStart=
+ioOutputDefaultAppError=
+ioOutputAutExtAppReadyToStart=
+ioOutputStationError=
+ioGroupStationError=
+ioGroupAppStart=
+udpAppEnableInputUsed=false
+externalControl=true
+udpCtrlReceivers=172.31.1.1\:30333
+ioGroupDefaultAppError=
+ioOutputAutExtActive=
+externalControlType=UDP
+ioGroupAutExtAppReadyToStart=

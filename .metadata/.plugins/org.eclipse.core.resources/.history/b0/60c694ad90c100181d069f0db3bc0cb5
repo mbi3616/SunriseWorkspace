@@ -1,0 +1,202 @@
+package application;
+
+
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetSocketAddress;
+import java.net.SocketException;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.ListIterator;
+import java.util.concurrent.TimeUnit;
+
+import java.net.*;
+
+import javax.inject.Inject;
+
+import threads.TrackRec;
+
+import com.kuka.common.ThreadUtil;
+import com.kuka.generated.ioAccess.MediaFlangeIOGroup;
+import com.kuka.roboticsAPI.applicationModel.RoboticsAPIApplication;
+import static com.kuka.roboticsAPI.motionModel.BasicMotions.*;
+
+import com.kuka.roboticsAPI.conditionModel.BooleanIOCondition;
+import com.kuka.roboticsAPI.conditionModel.ConditionObserver;
+import com.kuka.roboticsAPI.conditionModel.ForceCondition;
+import com.kuka.roboticsAPI.conditionModel.ICondition;
+import com.kuka.roboticsAPI.conditionModel.IRisingEdgeListener;
+import com.kuka.roboticsAPI.conditionModel.JointTorqueCondition;
+import com.kuka.roboticsAPI.conditionModel.NotificationType;
+import com.kuka.roboticsAPI.controllerModel.Controller;
+import com.kuka.roboticsAPI.deviceModel.JointEnum;
+import com.kuka.roboticsAPI.deviceModel.LBR;
+import com.kuka.roboticsAPI.executionModel.IFiredConditionInfo;
+import com.kuka.roboticsAPI.geometricModel.CartDOF;
+import com.kuka.roboticsAPI.geometricModel.CartPlane;
+import com.kuka.roboticsAPI.geometricModel.Frame;
+import com.kuka.roboticsAPI.geometricModel.ObjectFrame;
+import com.kuka.roboticsAPI.geometricModel.Tool;
+import com.kuka.roboticsAPI.geometricModel.World;
+import com.kuka.roboticsAPI.geometricModel.math.CoordinateAxis;
+import com.kuka.roboticsAPI.ioModel.AbstractIO;
+import com.kuka.roboticsAPI.motionModel.IMotion;
+import com.kuka.roboticsAPI.motionModel.IMotionContainer;
+import com.kuka.roboticsAPI.motionModel.MotionBatch;
+import com.kuka.roboticsAPI.motionModel.RobotMotion;
+import com.kuka.roboticsAPI.motionModel.Spline;
+import com.kuka.roboticsAPI.motionModel.controlModeModel.CartesianImpedanceControlMode;
+import com.kuka.roboticsAPI.motionModel.controlModeModel.CartesianSineImpedanceControlMode;
+import com.kuka.roboticsAPI.motionModel.controlModeModel.JointImpedanceControlMode;
+import com.kuka.roboticsAPI.motionModel.controlModeModel.PositionControlMode;
+import com.kuka.roboticsAPI.uiModel.ApplicationDialogType;
+
+/**
+ * Implementation of a robot application.
+ * <p>
+ * The application provides a {@link RoboticsAPITask#initialize()} and a 
+ * {@link RoboticsAPITask#run()} method, which will be called successively in 
+ * the application lifecycle. The application will terminate automatically after 
+ * the {@link RoboticsAPITask#run()} method has finished or after stopping the 
+ * task. The {@link RoboticsAPITask#dispose()} method will be called, even if an 
+ * exception is thrown during initialization or run. 
+ * <p>
+ * <b>It is imperative to call <code>super.dispose()</code> when overriding the 
+ * {@link RoboticsAPITask#dispose()} method.</b> 
+ * 
+ * @see UseRoboticsAPIContext
+ * @see #initialize()
+ * @see #run()
+ * @see #dispose()
+ */
+public class udpTest extends RoboticsAPIApplication {
+	private Controller kuka_Sunrise_Cabinet_1;
+	private LBR lbr_iiwa_7_R800_1;
+	private Tool tool;
+
+	public ArrayList<Frame> _trackPoints;
+	private ArrayList<Spline> _track;
+	private ConditionObserver trackServer;
+
+	private ICondition forceCon;
+	private CartesianImpedanceControlMode soft;
+	private Frame frames[];
+	private MotionBatch mb[];
+	private ObjectFrame world;
+	private ObjectFrame actTCP;
+	private MediaFlangeIOGroup mediaIO;
+	private ForceCondition gestureForce;
+	private double gestureForceVal;
+
+	@Override
+	public void initialize() {
+						
+		
+		
+		kuka_Sunrise_Cabinet_1 = getController("KUKA_Sunrise_Cabinet_1");
+		lbr_iiwa_7_R800_1 = (LBR) getDevice(kuka_Sunrise_Cabinet_1,
+				"LBR_iiwa_7_R800_1");
+
+		// actTCP = lbr_iiwa_14_R820_1.getFlange();
+
+		// init TCP
+		tool = createFromTemplate("Pin");
+		tool.attachTo(lbr_iiwa_7_R800_1.getFlange());
+		actTCP = tool.getFrame("/Pin_TCP");
+
+		_track = new ArrayList<Spline>();
+		_trackPoints = new ArrayList<Frame>();
+
+
+		mediaIO = new MediaFlangeIOGroup(kuka_Sunrise_Cabinet_1);
+
+		soft = new CartesianImpedanceControlMode();
+		soft.parametrize(CartDOF.ALL).setDamping(.7);
+		soft.parametrize(CartDOF.ROT).setStiffness(100);
+		soft.parametrize(CartDOF.TRANSL).setStiffness(600);
+
+		// World-Frame
+		world = World.Current.getRootFrame();
+		lbr_iiwa_7_R800_1.setESMState("2");
+
+		// init Stop-Funktion
+		AbstractIO UserButton = mediaIO.getInput("UserButton");
+		BooleanIOCondition bCond = new BooleanIOCondition(UserButton, true);
+		IRisingEdgeListener trackListen = new IRisingEdgeListener() {
+
+			@Override
+			public void onRisingEdge(ConditionObserver conditionObserver,
+					Date time, int missedEvents) {
+				getApplicationData().getProcessData("trackPath").setValue(true);
+			}
+		};
+
+		trackServer = getObserverManager().createAndEnableConditionObserver(
+				bCond, NotificationType.EdgesOnly, trackListen);
+
+		// Force condition for gesture control
+		gestureForceVal = getApplicationData().getProcessData("gestureForce")
+				.getValue();
+
+		gestureForce = ForceCondition.createNormalForceCondition(
+				lbr_iiwa_7_R800_1.getFlange(), CoordinateAxis.Y,
+				gestureForceVal);
+
+	}
+
+	@Override
+	public void run() throws Exception{
+		// your application execution starts here
+		
+
+		DatagramSocket mySocket = new DatagramSocket(30333);
+
+		// robot address (please adjust IP!)
+		InetSocketAddress robotAddress = new InetSocketAddress("172.31.1.147", 30300);
+		
+		// get robot state
+		byte[] msg = String.format("%d;0;Get_State;true", System.currentTimeMillis()).getBytes("UTF-8");
+		mySocket.send(new DatagramPacket(msg, msg.length, robotAddress));
+		
+		// receive answer state message
+		byte[] receiveData = new byte[508];
+		DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
+		mySocket.receive(receivePacket);
+		
+		// extract counter
+		String[] stateMessage = new String(receivePacket.getData()).split(";");
+		long counter = Long.parseLong(stateMessage[2]);
+		
+		// start application by sending a rising edge 
+		// (false->true) for App_Start
+		msg = String.format("%d;%d;App_Start;false", System.currentTimeMillis(), ++counter).getBytes("UTF-8");
+		mySocket.send(new DatagramPacket(msg, msg.length, robotAddress));
+		msg = String.format("%d;%d;App_Start;true", System.currentTimeMillis(), ++counter).getBytes("UTF-8");
+		mySocket.send(new DatagramPacket(msg, msg.length, robotAddress));
+		
+		
+		
+	
+		// lBR_iiwa_7_R800_1.move(ptpHome());
+		lbr_iiwa_7_R800_1.move(ptp(getApplicationData().getFrame("/StartPos")).setJointVelocityRel(0.25));
+		
+		mediaIO.setLEDBlue(true);
+		ThreadUtil.milliSleep(1000);
+		mediaIO.setLEDBlue(false);
+						
+		lbr_iiwa_7_R800_1.move(ptp(getApplicationData().getFrame("/P3")).setJointVelocityRel(0.25));
+		lbr_iiwa_7_R800_1.move(ptp(getApplicationData().getFrame("/StartPos")).setJointVelocityRel(0.25));
+					
+		mediaIO.setLEDBlue(true);
+		ThreadUtil.milliSleep(1000);
+		mediaIO.setLEDBlue(false);
+
+			
+		// lbr_iiwa_7_R800_1.move(ptpHome());
+		
+		// lbr_iiwa_7_R800_1.move(ptp(0.0, 0.0, 0.0, 1.57, 0.0, -1.57, 0.0));
+	}
+	
+}

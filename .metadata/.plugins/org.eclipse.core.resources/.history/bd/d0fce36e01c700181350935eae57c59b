@@ -1,0 +1,18 @@
+#Wed Oct 03 13:42:40 CEST 2018
+externalControlType=IO Groups
+ioOutputAutExtActive=
+udpAppEnableInputUsed=false
+externalControl=false
+ioGroupDefaultAppError=
+ioInputAppStart=
+ioGroupAutExtActive=
+ioGroupAppEnable=
+ioOutputDefaultAppError=
+ioOutputAutExtAppReadyToStart=
+udpCtrlClientIP=
+ioGroupAppStart=
+ioInputAppEnable=
+defaultApplication=
+ioGroupStationError=
+ioOutputStationError=
+ioGroupAutExtAppReadyToStart=
